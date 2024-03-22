@@ -25,6 +25,9 @@
     <ClCompile Include="FileMap.cpp">
       <Filter>Source</Filter>
     </ClCompile>
+    <ClCompile Include="VCxProj.cpp">
+      <Filter>Source</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="VCxProjParser.h">
@@ -40,6 +43,9 @@
       <Filter>Source</Filter>
     </ClInclude>
     <ClInclude Include="FileMap.h">
+      <Filter>Source</Filter>
+    </ClInclude>
+    <ClInclude Include="VCxProj.h">
       <Filter>Source</Filter>
     </ClInclude>
   </ItemGroup>

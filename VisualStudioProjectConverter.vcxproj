@@ -211,6 +211,7 @@
     <ClCompile Include="FilterFiles.cpp" />
     <ClCompile Include="Main.cpp" />
     <ClCompile Include="FilterMap.cpp" />
+    <ClCompile Include="VCxProj.cpp" />
     <ClCompile Include="VCxProjParser.cpp" />
   </ItemGroup>
   <ItemGroup>
@@ -224,6 +225,7 @@
     <ClInclude Include="FileMap.h" />
     <ClInclude Include="FilterFiles.h" />
     <ClInclude Include="FilterMap.h" />
+    <ClInclude Include="VCxProj.h" />
     <ClInclude Include="VCxProjParser.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
