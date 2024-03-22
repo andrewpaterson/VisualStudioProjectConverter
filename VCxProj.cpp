@@ -7,9 +7,10 @@
 //
 //
 //////////////////////////////////////////////////////////////////////////
-void CVCxProj::Init(char* szProjectDirectory)
+void CVCxProj::Init(char* szProjectDirectory, char* szProjectFilterFile)
 {
 	mszProjectDirectory.Init(szProjectDirectory);
+	mszProjectFilterFile.Init(szProjectFilterFile);
 
 	mmFilters.Init();
 	mmFilterFiles.Init();
@@ -27,6 +28,7 @@ void CVCxProj::Kill(void)
 	mmFilterFiles.Kill();
 	mmFilters.Kill();
 
+	mszProjectFilterFile.Kill();
 	mszProjectDirectory.Kill();
 }
 
@@ -40,7 +42,7 @@ bool CVCxProj::Parse(void)
 	CVCxProjParser	cParser;
 	bool			bResult;
 
-	cParser.Init(&mmFilters, "BaseLib.vcxproj.filters", mszProjectDirectory.Text());
+	cParser.Init(&mmFilters, mszProjectFilterFile.Text(), mszProjectDirectory.Text());
 	bResult = cParser.Parse();
 	if (!bResult)
 	{

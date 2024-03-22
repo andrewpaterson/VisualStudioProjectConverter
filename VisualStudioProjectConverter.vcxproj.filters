@@ -28,6 +28,9 @@
     <ClCompile Include="VCxProj.cpp">
       <Filter>Source</Filter>
     </ClCompile>
+    <ClCompile Include="VCxProjects.cpp">
+      <Filter>Source</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="VCxProjParser.h">
@@ -46,6 +49,9 @@
       <Filter>Source</Filter>
     </ClInclude>
     <ClInclude Include="VCxProj.h">
+      <Filter>Source</Filter>
+    </ClInclude>
+    <ClInclude Include="VCxProjects.h">
       <Filter>Source</Filter>
     </ClInclude>
   </ItemGroup>

@@ -4,7 +4,7 @@
 #include "BaseLib/FastFunctions.h"
 #include "BaseLib/NumberControl.h"
 #include "BaseLib/Logger.h"
-#include "VCxProj.h"
+#include "VCxProjects.h"
 
 
 //////////////////////////////////////////////////////////////////////////
@@ -45,24 +45,14 @@ int __cdecl main(void)
 	StartUp();
 
 	bool			bResult;
-	char			szHomeDirectory[] = "D:\\gameengine\\CommonLibraries\\BaseLib";
+	CVCxProjects	cProjects;
 
-	CVCxProj	cProj;
-
-	cProj.Init(szHomeDirectory);
+	cProjects.Init("D:\\gameengine\\CommonLibraries\\");
+	bResult = cProjects.Add("D:\\gameengine\\CommonLibraries\\BaseLib", "BaseLib.vcxproj.filters");
+	bResult = cProjects.Add("D:\\gameengine\\CommonLibraries\\StandardLib", "StandardLib.vcxproj.filters");
+	bResult = cProjects.Add("D:\\gameengine\\Test\\TestBaseLib\\TestBaseLib", "TestBaseLib.vcxproj.filters");
 	
-	bResult = cProj.Parse();
-	if (!bResult)
-	{
-		cProj.Kill();
-		return Shutdown(1);
-	}
-
-	cProj.DumpDirectoryFiles();
-	cProj.DumpFilterFiles();
-	cProj.DumpFilters();
-
-	cProj.Kill();
+	cProjects.Kill();
 
 	return Shutdown(0);
 }

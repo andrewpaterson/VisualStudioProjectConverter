@@ -12,9 +12,10 @@ protected:
 	CFileMap		mmDirectoryFiles;
 
 	CChars			mszProjectDirectory;
+	CChars			mszProjectFilterFile;
 
 public:
-	void	Init(char* szProjectDirectory);
+	void	Init(char* szProjectDirectory, char* szProjectFilterFile);
 	bool	Parse(void);
 	void	Kill(void);
 
