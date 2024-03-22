@@ -1,3 +1,4 @@
+#include "BaseLib/FileUtil.h"
 #include "VCxProjParser.h"
 
 
@@ -110,6 +111,8 @@ bool CVCxProjParser::ParseFileTag(CMarkupTag* pcFileTag)
 	CMarkupTag*		pcFilter;
 	CChars			szFilter;
 	CFilterFiles*	pcFiles;
+	CChars			sz;
+	CFileUtil		cFileUtil;
 
 	szFilename = pcFileTag->GetAttribute("Include");
 	if (StrEmpty(szFilename))
@@ -124,13 +127,17 @@ bool CVCxProjParser::ParseFileTag(CMarkupTag* pcFileTag)
 		pcFilter->GetText(&szFilter);
 		pcFiles = mpmFilters->AddFilter(szFilter.Text());
 		szFilter.Kill();
-
 	}
 	else
 	{
 		pcFiles = mpmFilters->AddFilter("\\");
 	}
-	pcFiles->AddFile(szFilename);
+
+	sz.Init(szFilename);
+	cFileUtil.RemovePath(&sz);
+	pcFiles->AddFile(sz.Text());
+	sz.Kill();
+
 	return true;
 }
 

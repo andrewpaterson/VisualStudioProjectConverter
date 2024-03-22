@@ -1,3 +1,4 @@
+#include "BaseLib/DebugOutput.h"
 #include "FilterMap.h"
 
 
@@ -55,6 +56,39 @@ CFilterFiles* CFilterMap::AddFilter(char* szFilter)
 //																		//
 //																		//
 //////////////////////////////////////////////////////////////////////////
+void CFilterMap::CreateInverseMap(CFileMap* pmInverse)
+{
+	SMapIterator	sIter;
+	char*			szKey;
+	CFilterFiles*	pcFiles;
+	bool			bExists;
+	CArrayChars*	paszFiles;
+	int				i;
+	int				iNumElements;
+	char*			szFilename;
+	CFileFilters*	pcFileFilters;
+
+	bExists = StartIteration(&sIter, (void**)&szKey, NULL, (void**)&pcFiles, NULL);
+	while (bExists)
+	{
+		paszFiles = pcFiles->GetFiles();
+		iNumElements = paszFiles->NumElements();
+		for (i = 0; i < iNumElements; i++)
+		{
+			szFilename = paszFiles->Get(i)->Text();
+			pcFileFilters = pmInverse->AddFile(szFilename);
+			pcFileFilters->AddFilter(szKey);
+		}
+
+		bExists = Iterate(&sIter, (void**)&szKey, NULL, (void**)&pcFiles, NULL);
+	}
+}
+
+
+//////////////////////////////////////////////////////////////////////////
+//																		//
+//																		//
+//////////////////////////////////////////////////////////////////////////
 void CFilterMap::Print(CChars* psz)
 {
 	SMapIterator	sIter;
@@ -74,9 +108,9 @@ void CFilterMap::Print(CChars* psz)
 		for (i = 0; i < iNumElements; i++)
 		{
 			szFilename = paszFiles->Get(i)->Text();
-			if (!StrEmpty(szKey))
+			psz->Append(szKey);
+			if (strcmp("\\", szKey) != 0)
 			{
-				psz->Append(szKey);
 				psz->Append("\\");
 			}
 			psz->Append(szFilename);
