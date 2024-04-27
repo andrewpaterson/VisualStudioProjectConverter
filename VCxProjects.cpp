@@ -27,6 +27,7 @@ void CVCxProjects::Kill(void)
 		pcProj = mlProjects.GetNext(pcProj);
 	}
 
+	mlProjects.Kill();
 	mszCommonLibraryDirectory.Kill();
 }
 

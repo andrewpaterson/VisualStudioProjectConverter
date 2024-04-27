@@ -51,6 +51,8 @@ int __cdecl main(void)
 	bResult = cProjects.Add("D:\\gameengine\\CommonLibraries\\BaseLib", "BaseLib.vcxproj.filters");
 	bResult = cProjects.Add("D:\\gameengine\\CommonLibraries\\StandardLib", "StandardLib.vcxproj.filters");
 	bResult = cProjects.Add("D:\\gameengine\\Test\\TestBaseLib\\TestBaseLib", "TestBaseLib.vcxproj.filters");
+	bResult = cProjects.Add("D:\\gameengine\\Test\\TestStandardLib\\TestStandardLib", "TestStandardLib.vcxproj.filters");
+
 	
 	cProjects.Kill();
 
